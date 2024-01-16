@@ -99,7 +99,9 @@ C     derz1(j)=derz1(j)+weights(i)*(z(i)*G(i,j)-p*G(i,j))
                derz(j)=dabs(derz(j))
                penfac_zero(j)=penaltyfactor_zero(j)/sumz*kz
                derz(j)=derz(j)/(penfac_zero(j)*alpha_zero)
-               
+               if(penfac_zero(j)==0)then
+                  derz(j)=0
+               endif
 C     derz1(j)=dabs(derz1(j))
 C     derz1(j)=derz1(j)/(penfac_zero(j)*alpha_zero)
  110        enddo
@@ -122,6 +124,9 @@ C     +       (y(i)/mu-(y(i)+theta)/(mu+theta))
                derx(j)=dabs(derx(j))
                penfac_count(j)=penaltyfactor_count(j)/sumx*kx
                derx(j)=derx(j)/(penfac_count(j)*alpha_count)
+               if(penfac_count(j)==0)then
+                  derx(j)=0
+               endif
 C     derx1(j)=dabs(derx1(j))
 C     derx1(j)=derx1(j)/(penfac_count(j)*alpha_count)
  130        enddo
