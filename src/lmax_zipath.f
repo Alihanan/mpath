@@ -58,6 +58,9 @@ C     derx1(k)=0
                derz(j)=dabs(derz(j))
                penfac_zero(j)=penaltyfactor_zero(j)/sumz*kz
                derz(j)=derz(j)/(penfac_zero(j)*alpha_zero)
+               if(penfac_zero(j)==0)then
+                  derz(j)=0
+               endif
  10         enddo
          endif
          if(kx > 1)then
@@ -73,6 +76,9 @@ C     derx1(k)=0
                derx(j)=dabs(derx(j))
                penfac_count(j)=penaltyfactor_count(j)/sumx*kx
                derx(j)=derx(j)/(penfac_count(j)*alpha_count)
+               if(penfac_count(j)==0)then
+                  derx(j)=0
+               endif
  30         enddo
          endif
       else if(family==4)then
